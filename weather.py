@@ -3,7 +3,7 @@ import csv # csv로 저장
 import os # 폴더 생성
 from datetime import datetime # 시간 변환
 city = "seoul"
-API_KEY = os.getenv("API_KEY_W")
+API_KEY_W = os.getenv("API_KEY_W")
 url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
 response = requests.get(url)
 result = response.json()
