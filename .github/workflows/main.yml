@@ -9,22 +9,22 @@ jobs: # 실행할 작업을 정의
   request_weather:
     runs-on: ubuntu-latest
     steps:
-      - name:
+      - name: 저장소 체크아웃
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name:
+      - name: Python 설정
         uses: actions/setup-python@v4
         with:
           python-version: "3.9"
 
-      - name: # Python 패키지 설치
+      - name: Python 패키지 설치
         run: pip install requests
-      - name: # 날씨 데이터 가져오기
+      - name: 날씨 데이터 가져오기
         env:
           API_KEY: ${{ secrets.API_KEY_W }}
         run: python weather.py
-      - name: # 변경 사항 커밋 및 푸시
+      - name: 변경 사항 커밋 및 푸시
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions@github.com"
